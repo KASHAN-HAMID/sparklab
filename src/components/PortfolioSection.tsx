@@ -68,7 +68,7 @@ const projects = [
     liveUrl: "#",
   },
   {
-    title: "Social Media Campaign",
+    title: "Social Media Posters",
     description: "Eye-catching graphics for Instagram marketing.",
     image: "/projects/graphic designing/2.jpg",
     category: "Graphic Design",
@@ -76,8 +76,8 @@ const projects = [
     liveUrl: "#",
   },
   {
-    title: "Product Packaging",
-    description: "Creative and functional packaging for a food brand.",
+    title: "Broucher",
+   
     image: "/projects/graphic designing/3.jpg",
     category: "Graphic Design",
     technologies: ["Illustrator", "InDesign"],
@@ -86,24 +86,22 @@ const projects = [
 
   // Video Editing
   {
-    title: "Travel Vlog",
-    description: "Cinematic travel video with transitions and color grading.",
+
+
     image: "/projects/video editing/4.mp4",
     category: "Video Editing",
     technologies: ["Premiere Pro", "After Effects"],
     liveUrl: "#",
   },
   {
-    title: "Product Ad",
-    description: "30-second commercial with animations and sound design.",
+   
     image: "/projects/video editing/2.mp4",
     category: "Video Editing",
     technologies: ["Final Cut Pro", "Logic Pro"],
     liveUrl: "#",
   },
   {
-    title: "Event Recap",
-    description: "Highlight video for a corporate event.",
+   
     image: "/projects/video editing/5.mp4",
     category: "Video Editing",
     technologies: ["Premiere Pro"],
