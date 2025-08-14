@@ -9,8 +9,7 @@ import { ExternalLink, X } from "lucide-react";
 
 const projects = [
   // Web Development
- // Web Development
- {
+  {
     title: "E-Commerce Platform",
     description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
     image: "/projects/web development/1.png",
@@ -58,37 +57,7 @@ const projects = [
     technologies: ["React", "TailwindCSS", "Vercel"],
     liveUrl: "https://boldhue.vercel.app/",
   },
-];
 
-export default function ProjectList() {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-48 object-cover"
-          />
-          <div className="p-4">
-            <h3 className="text-lg font-bold">{project.title}</h3>
-            <p className="text-gray-600">{project.description}</p>
-            <div className="mt-4">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition"
-              >
-                View Live
-              </a>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
   // Graphic Design
   {
     title: "Brand Identity Design",
@@ -114,6 +83,7 @@ export default function ProjectList() {
     technologies: ["Illustrator", "InDesign"],
     liveUrl: "#",
   },
+
   // Video Editing
   {
     title: "Travel Vlog",
@@ -146,11 +116,10 @@ const categories = ["All", "Web Development", "Graphic Design", "Video Editing"]
 export default function PortfolioSection() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showAll, setShowAll] = useState(false);
-  const [modalProject, setModalProject] = useState<any>(null);
+  const [modalProject, setModalProject] = useState(null);
 
-  // ESC key listener for closing modal
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    const handleEsc = (e) => {
       if (e.key === "Escape") setModalProject(null);
     };
     window.addEventListener("keydown", handleEsc);
@@ -164,10 +133,7 @@ export default function PortfolioSection() {
 
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
 
-  const isVideo = (filePath: string) => filePath.endsWith(".mp4");
-
-  const openModal = (project: any) => setModalProject(project);
-  const closeModal = () => setModalProject(null);
+  const isVideo = (filePath) => filePath.endsWith(".mp4");
 
   return (
     <section className="py-20 bg-black" id="portfolio">
@@ -197,10 +163,7 @@ export default function PortfolioSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="group overflow-hidden glass border-white/10 hover:border-primary/50 transition-all duration-300 h-full max-w-sm mx-auto hover:scale-105">
-                <div
-                  className="relative overflow-hidden cursor-pointer"
-                  onClick={() => openModal(project)} // mobile & desktop click
-                >
+                <div className="relative overflow-hidden">
                   {isVideo(project.image) ? (
                     <video
                       className="w-full h-40 object-cover"
@@ -217,19 +180,6 @@ export default function PortfolioSection() {
                       className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   )}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Button
-                      size="sm"
-                      className="bg-primary text-black font-medium hover:bg-primary/90 hover:scale-110 transition-all duration-200"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(project);
-                      }}
-                    >
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      View
-                    </Button>
-                  </div>
                 </div>
                 <div className="p-4">
                   <Badge variant="secondary" className="text-xs">
@@ -241,7 +191,7 @@ export default function PortfolioSection() {
                   <p className="text-white/70 text-sm mb-3 line-clamp-2">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1 mb-3">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <Badge
                         key={techIndex}
@@ -257,6 +207,17 @@ export default function PortfolioSection() {
                       </Badge>
                     )}
                   </div>
+                  {project.liveUrl && project.liveUrl !== "#" && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-primary text-black font-medium px-3 py-1 rounded hover:bg-primary/90 transition"
+                    >
+                      <ExternalLink className="w-3 h-3 mr-1" />
+                      View Live
+                    </a>
+                  )}
                 </div>
               </Card>
             </motion.div>
@@ -276,50 +237,6 @@ export default function PortfolioSection() {
           </div>
         )}
       </div>
-
-      {/* Modal */}
-      <AnimatePresence>
-        {modalProject && (
-          <motion.div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-white rounded-lg shadow-lg max-w-3xl w-full relative p-4"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-            >
-              <button
-                onClick={closeModal}
-                className="absolute top-2 right-2 p-1 rounded-full bg-gray-200 hover:bg-gray-300"
-              >
-                <X size={20} />
-              </button>
-
-              {isVideo(modalProject.image) ? (
-                <video
-                  src={modalProject.image}
-                  controls
-                  autoPlay
-                  className="w-full rounded-lg"
-                />
-              ) : (
-                <img
-                  src={modalProject.image}
-                  alt={modalProject.title}
-                  className="w-full rounded-lg"
-                />
-              )}
-
-              <h3 className="text-lg font-semibold mt-4">{modalProject.title}</h3>
-              <p className="text-sm text-gray-600">{modalProject.description}</p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
