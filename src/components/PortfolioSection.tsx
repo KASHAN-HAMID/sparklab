@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,8 +10,8 @@ import { ExternalLink, X } from "lucide-react";
 const projects = [
   // Web Development
   {
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
+    title: "Trading App",
+    description: "A real-time trading application built with Next.js and TailwindCSS.",
     image: "/projects/web development/1.png",
     category: "Web Development",
     technologies: ["Next.js", "TailwindCSS", "Stripe"],
@@ -117,6 +117,7 @@ export default function PortfolioSection() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showAll, setShowAll] = useState(false);
   const [modalProject, setModalProject] = useState(null);
+  const modalRef = useRef(null);
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -126,6 +127,20 @@ export default function PortfolioSection() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        setModalProject(null);
+      }
+    };
+    if (modalProject) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalProject]);
+
   const filteredProjects =
     selectedCategory === "All"
       ? projects
@@ -134,6 +149,11 @@ export default function PortfolioSection() {
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
 
   const isVideo = (filePath) => filePath.endsWith(".mp4");
+
+  const handleProjectClick = (project) => {
+    // Open modal for all categories
+    setModalProject(project);
+  };
 
   return (
     <section className="py-20 bg-black" id="portfolio">
@@ -162,7 +182,10 @@ export default function PortfolioSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group overflow-hidden glass border-white/10 hover:border-primary/50 transition-all duration-300 h-full max-w-sm mx-auto hover:scale-105">
+              <Card
+                onClick={() => handleProjectClick(project)}
+                className="group overflow-hidden glass border-white/10 hover:border-primary/50 transition-all duration-300 h-full max-w-sm mx-auto hover:scale-105 cursor-pointer"
+              >
                 <div className="relative overflow-hidden">
                   {isVideo(project.image) ? (
                     <video
@@ -207,17 +230,6 @@ export default function PortfolioSection() {
                       </Badge>
                     )}
                   </div>
-                  {project.liveUrl && project.liveUrl !== "#" && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center bg-primary text-black font-medium px-3 py-1 rounded hover:bg-primary/90 transition"
-                    >
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      View Live
-                    </a>
-                  )}
                 </div>
               </Card>
             </motion.div>
@@ -237,6 +249,66 @@ export default function PortfolioSection() {
           </div>
         )}
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {modalProject && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              ref={modalRef}
+              className="relative bg-black rounded-xl p-4 max-w-4xl w-full"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              <button
+                onClick={() => setModalProject(null)}
+                className="absolute top-3 right-3 text-white hover:text-primary"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <h2 className="text-xl font-semibold mb-4 text-white">
+                {modalProject.title}
+              </h2>
+
+              {isVideo(modalProject.image) ? (
+                <video
+                  src={modalProject.image}
+                  controls
+                  autoPlay
+                  className="w-full rounded-lg"
+                />
+              ) : (
+                <img
+                  src={modalProject.image}
+                  alt={modalProject.title}
+                  className="w-full rounded-lg"
+                />
+              )}
+
+              <p className="text-white/80 mt-3">{modalProject.description}</p>
+
+              {modalProject.liveUrl && modalProject.liveUrl !== "#" && (
+                <a
+                  href={modalProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center mt-4 bg-primary text-black font-medium px-3 py-1 rounded hover:bg-primary/90 transition"
+                >
+                  <ExternalLink className="w-4 h-4 mr-1" />
+                  View Live
+                </a>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
