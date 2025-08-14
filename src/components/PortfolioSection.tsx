@@ -10,55 +10,85 @@ import { ExternalLink, X } from "lucide-react";
 const projects = [
   // Web Development
  // Web Development
-{
-  title: "E-Commerce Platform",
-  description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
-  image: "/projects/web development/1.png",
-  category: "Web Development",
-  technologies: ["Next.js", "TailwindCSS", "Stripe"],
-  liveUrl: "https://tech-nova-trading.vercel.app/",
-},
-{
-  title: "Jewelry Store Website",
-  description: "Elegant online jewelry store with a sleek and responsive design.",
-  image: "/projects/web development/2.png",
-  category: "Web Development",
-  technologies: ["Next.js", "TailwindCSS", "E-Commerce"],
-  liveUrl: "https://jewlwerry.vercel.app/",
-},
-{
-  title: "Portfolio Website",
-  description: "Personal portfolio showcasing my skills and projects.",
-  image: "/projects/web development/3.png",
-  category: "Web Development",
-  technologies: ["React", "Framer Motion", "Vercel"],
-  liveUrl: "https://kashan-hamid-portfolio.vercel.app/",
-},
-{
-  title: "Consultancy Website",
-  description: "Professional consultancy firm website with service details and contact form.",
-  image: "/projects/web development/4.png",
-  category: "Web Development",
-  technologies: ["WordPress", "PHP", "Elementor"],
-  liveUrl: "https://www.thevisionconsultants.com/",
-},
-{
-  title: "Homestay Booking Platform",
-  description: "A full-featured homestay booking platform for travelers.",
-  image: "/projects/web development/5.png",
-  category: "Web Development",
-  technologies: ["Node.js", "Express", "PostgreSQL"],
-  liveUrl: "https://homestay-wanderlust-production.up.railway.app/",
-},
-{
-  title: "Creative Agency Website",
-  description: "Bold and modern creative agency portfolio website.",
-  image: "/projects/web development/6.png",
-  category: "Web Development",
-  technologies: ["React", "TailwindCSS", "Vercel"],
-  liveUrl: "https://boldhue.vercel.app/",
-},
+ {
+    title: "E-Commerce Platform",
+    description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
+    image: "/projects/web development/1.png",
+    category: "Web Development",
+    technologies: ["Next.js", "TailwindCSS", "Stripe"],
+    liveUrl: "https://tech-nova-trading.vercel.app/",
+  },
+  {
+    title: "Jewelry Store Website",
+    description: "Elegant online jewelry store with a sleek and responsive design.",
+    image: "/projects/web development/2.png",
+    category: "Web Development",
+    technologies: ["Next.js", "TailwindCSS", "E-Commerce"],
+    liveUrl: "https://jewlwerry.vercel.app/",
+  },
+  {
+    title: "Portfolio Website",
+    description: "Personal portfolio showcasing my skills and projects.",
+    image: "/projects/web development/3.png",
+    category: "Web Development",
+    technologies: ["React", "Framer Motion", "Vercel"],
+    liveUrl: "https://kashan-hamid-portfolio.vercel.app/",
+  },
+  {
+    title: "Consultancy Website",
+    description: "Professional consultancy firm website with service details and contact form.",
+    image: "/projects/web development/4.png",
+    category: "Web Development",
+    technologies: ["WordPress", "PHP", "Elementor"],
+    liveUrl: "https://www.thevisionconsultants.com/",
+  },
+  {
+    title: "Homestay Booking Platform",
+    description: "A full-featured homestay booking platform for travelers.",
+    image: "/projects/web development/5.png",
+    category: "Web Development",
+    technologies: ["Node.js", "Express", "PostgreSQL"],
+    liveUrl: "https://homestay-wanderlust-production.up.railway.app/",
+  },
+  {
+    title: "Creative Agency Website",
+    description: "Bold and modern creative agency portfolio website.",
+    image: "/projects/web development/6.png",
+    category: "Web Development",
+    technologies: ["React", "TailwindCSS", "Vercel"],
+    liveUrl: "https://boldhue.vercel.app/",
+  },
+];
 
+export default function ProjectList() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, index) => (
+        <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-4">
+            <h3 className="text-lg font-bold">{project.title}</h3>
+            <p className="text-gray-600">{project.description}</p>
+            <div className="mt-4">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition"
+              >
+                View Live
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
   // Graphic Design
   {
     title: "Brand Identity Design",
