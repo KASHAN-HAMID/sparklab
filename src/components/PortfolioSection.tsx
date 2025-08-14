@@ -9,30 +9,56 @@ import { ExternalLink, X } from "lucide-react";
 
 const projects = [
   // Web Development
-  {
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
-    image: "/projects/web development/1.png",
-    category: "Web Development",
-    technologies: ["Next.js", "TailwindCSS", "Stripe"],
-    liveUrl: "https://example.com",
-  },
-  {
-    title: "Portfolio Website",
-    description: "Personal portfolio showcasing my skills and projects.",
-    image: "/projects/web development/2.png",
-    category: "Web Development",
-    technologies: ["React", "Framer Motion", "Vercel"],
-    liveUrl: "https://example.com",
-  },
-  {
-    title: "Blog Platform",
-    description: "Full-stack blog platform with authentication and rich text editor.",
-    image: "/projects/web development/3.png",
-    category: "Web Development",
-    technologies: ["Next.js", "MongoDB", "Auth.js"],
-    liveUrl: "https://example.com",
-  },
+ // Web Development
+{
+  title: "E-Commerce Platform",
+  description: "A modern e-commerce platform built with Next.js and TailwindCSS.",
+  image: "/projects/web development/1.png",
+  category: "Web Development",
+  technologies: ["Next.js", "TailwindCSS", "Stripe"],
+  liveUrl: "https://tech-nova-trading.vercel.app/",
+},
+{
+  title: "Jewelry Store Website",
+  description: "Elegant online jewelry store with a sleek and responsive design.",
+  image: "/projects/web development/2.png",
+  category: "Web Development",
+  technologies: ["Next.js", "TailwindCSS", "E-Commerce"],
+  liveUrl: "https://jewlwerry.vercel.app/",
+},
+{
+  title: "Portfolio Website",
+  description: "Personal portfolio showcasing my skills and projects.",
+  image: "/projects/web development/3.png",
+  category: "Web Development",
+  technologies: ["React", "Framer Motion", "Vercel"],
+  liveUrl: "https://kashan-hamid-portfolio.vercel.app/",
+},
+{
+  title: "Consultancy Website",
+  description: "Professional consultancy firm website with service details and contact form.",
+  image: "/projects/web development/4.png",
+  category: "Web Development",
+  technologies: ["WordPress", "PHP", "Elementor"],
+  liveUrl: "https://www.thevisionconsultants.com/",
+},
+{
+  title: "Homestay Booking Platform",
+  description: "A full-featured homestay booking platform for travelers.",
+  image: "/projects/web development/5.png",
+  category: "Web Development",
+  technologies: ["Node.js", "Express", "PostgreSQL"],
+  liveUrl: "https://homestay-wanderlust-production.up.railway.app/",
+},
+{
+  title: "Creative Agency Website",
+  description: "Bold and modern creative agency portfolio website.",
+  image: "/projects/web development/6.png",
+  category: "Web Development",
+  technologies: ["React", "TailwindCSS", "Vercel"],
+  liveUrl: "https://boldhue.vercel.app/",
+},
+
   // Graphic Design
   {
     title: "Brand Identity Design",
