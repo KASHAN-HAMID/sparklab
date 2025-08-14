@@ -62,7 +62,7 @@ const projects = [
   {
     title: "Travel Vlog",
     description: "Cinematic travel video with transitions and color grading.",
-    image: "/projects/video editing/1.mp4",
+    image: "/projects/video editing/4.mp4",
     category: "Video Editing",
     technologies: ["Premiere Pro", "After Effects"],
     liveUrl: "#",
@@ -78,7 +78,7 @@ const projects = [
   {
     title: "Event Recap",
     description: "Highlight video for a corporate event.",
-    image: "/projects/video editing/3.mp4",
+    image: "/projects/video editing/5.mp4",
     category: "Video Editing",
     technologies: ["Premiere Pro"],
     liveUrl: "#",
