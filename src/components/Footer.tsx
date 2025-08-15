@@ -1,4 +1,4 @@
-import { Github, Twitter, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Github, Instagram, Facebook, MessageCircle, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Footer = () => {
@@ -7,6 +7,7 @@ const Footer = () => {
       <div className="container px-4">
         <div className="glass glass-hover rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Logo & About */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <img 
@@ -18,11 +19,13 @@ const Footer = () => {
               <p className="text-sm text-muted-foreground">
                 Transforming businesses through innovative digital solutions and creative excellence.
               </p>
+
+              {/* Social Links */}
               <div className="flex space-x-4">
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  onClick={() => window.open('https://facebook.com/sparklabcreative', '_blank')}
+                  onClick={() => window.open('https://www.facebook.com/share/19bWkqhkaT/', '_blank')}
                   className="hover:text-primary"
                 >
                   <Facebook className="w-4 h-4" />
@@ -30,7 +33,7 @@ const Footer = () => {
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  onClick={() => window.open('https://instagram.com/sparklabcreative', '_blank')}
+                  onClick={() => window.open('https://www.instagram.com/sparklab_creative?utm_source=qr&igsh=Z2d5Z3dkdXU2NTd2', '_blank')}
                   className="hover:text-primary"
                 >
                   <Instagram className="w-4 h-4" />
@@ -46,14 +49,15 @@ const Footer = () => {
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  onClick={() => window.open('https://twitter.com/sparklabcreative', '_blank')}
+                  onClick={() => window.open('https://www.linkedin.com/company/sparklab-creative/', '_blank')}
                   className="hover:text-primary"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Linkedin className="w-4 h-4" />
                 </Button>
               </div>
             </div>
 
+            {/* Services */}
             <div className="space-y-4">
               <h4 className="font-medium">Services</h4>
               <ul className="space-y-2">
@@ -90,6 +94,7 @@ const Footer = () => {
               </ul>
             </div>
 
+            {/* Company */}
             <div className="space-y-4">
               <h4 className="font-medium">Company</h4>
               <ul className="space-y-2">
@@ -111,6 +116,7 @@ const Footer = () => {
               </ul>
             </div>
 
+            {/* Contact Info */}
             <div className="space-y-4">
               <h4 className="font-medium">Contact Info</h4>
               <ul className="space-y-2">
@@ -133,6 +139,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Footer Bottom */}
           <div className="mt-8 pt-8 border-t border-white/10">
             <p className="text-sm text-muted-foreground text-center">
               © {new Date().getFullYear()} SparkLab Creative. All rights reserved.
